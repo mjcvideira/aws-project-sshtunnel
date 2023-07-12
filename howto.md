@@ -23,3 +23,63 @@ In this guide, we will walk you through the process of setting up an AWS project
 5. Click on "Create VPC" to create the VPC.
 ...
 
+## Step 2: Create Subnets
+
+1. Within the VPC dashboard, click on "Subnets" and then "Create subnet."
+2. Provide a name for the subnet and select the VPC you created in the previous step.
+3. Choose an appropriate IPv4 CIDR block for the subnet (e.g., `10.0.1.0/24`).
+4. Select the availability zone in which you want to create the subnet.
+5. Repeat these steps to create both a public and a private subnet.
+
+## Step 3: Set Up Internet Gateway and Route Tables
+
+1. In the VPC dashboard, click on "Internet Gateways" and then "Create internet gateway."
+2. Provide a name for the internet gateway and click on "Create internet gateway."
+3. Select the newly created internet gateway and click on "Attach to VPC."
+4. Choose the VPC you created in Step 1 and click on "Attach internet gateway."
+
+## Step 4: Launch an EC2 Instance as the Jump Box
+
+1. In the EC2 dashboard, click on "Launch Instance" to start the instance creation process.
+2. Choose an Amazon Machine Image (AMI) that matches your preferred operating system.
+3. Select an instance type based on your requirements.
+4. Configure the instance details:
+   - Select the VPC you created in Step 1.
+   - Choose the public subnet you created in Step 2.
+   - Enable "Auto-assign Public IP" to ensure the instance receives a public IP.
+   - Configure additional settings as per your requirements.
+5. Add storage, tags, and security groups as needed.
+6. Review the instance details and click on "Launch."
+7. Select or create a key pair for SSH access and proceed with launching the instance.
+
+## Step 5: Set Up Security Groups
+
+1. In the EC2 dashboard, click on "Security Groups" and then "Create security group."
+2. Provide a name for the security group and select the VPC you created in Step 1.
+3. Configure inbound rules to allow SSH access from your IP address (e.g., source: `0.0.0.0/0`, port: `22`).
+4. Review the settings and click on "Create security group."
+
+## Step 6: Set Up the Isolated Database (Amazon RDS)
+
+1. In the Amazon RDS dashboard, click on "Subnet groups" and then "Create DB subnet group."
+2. Provide a name and description for the subnet group.
+3. Select the private subnets you created in Step 2 and click on "Create."
+4. Click on "Databases" and then "Create database" to create a new database.
+5. Choose the desired database engine (e.g., Amazon Aurora, MySQL) and version.
+6. Configure the database settings, such as DB instance identifier, username, and password.
+7. Select the VPC you created in Step 1 and the subnet group you created in Step 6.
+8. Configure additional settings, such as storage, backups, and monitoring, based on your requirements.
+9. Review the settings and click on "Create database" to create the isolated database.
+
+## Step 7: Establish SSH Tunnel and Access the Database
+
+Open a terminal or command prompt on your local machine.
+Use the following command to establish an SSH tunnel to the jump box instance:
+
+ ssh -i path/to/key.pem -L <local-port>:<database-endpoint>:<database-port> ec2-user@<jump-box-public-ip>
+
+Replace path/to/key.pem with the path to your private key file.
+Replace <local-port> with the desired local port for port forwarding (e.g., 3306 for MySQL).
+Replace <database-endpoint> and <database-port> with the endpoint and port of the isolated database.
+Replace <jump-box-public-ip> with the public IP of the jump box instance.
+Once the SSH tunnel is established, you can use database management tools (e.g., MySQL, pgAdmin) to connect to localhost:<local-port> on your local machine and interact with the isolated database.
