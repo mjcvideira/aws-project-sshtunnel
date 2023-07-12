@@ -15,5 +15,10 @@ In this guide, we will walk you through the process of setting up an AWS project
 
 ## Step 1: Create a Virtual Private Cloud (VPC)
 
+1. Go to the AWS Management Console and navigate to the VPC service.
+2. Click on "Create VPC" to start creating a new VPC.
+3. Provide a name for your VPC and enter the desired IPv4 CIDR block (e.g., `10.0.0.0/16`).
+4. Configure the VPC's advanced options, such as DNS resolution and DNS hostnames, according to your requirements.
+5. Click on "Create VPC" to create the VPC.
 ...
 
