@@ -7,6 +7,7 @@ This is a simple AWS project that involves using an EC2 instance as a "jump box"
 ## Problem
 
 The objective of this project is to establish a secure and cost-effective method to access a database located in a private subnet within our VPC. By using a jump box in a public subnet, we can avoid the need for a NAT gateway or exposing the database to a public subnet.
+![image](https://github.com/mjcvideira/aws-project-sshtunnel/assets/114146806/d738c361-938b-47ab-821e-45c939a53148)
 
 ## Solution
 
