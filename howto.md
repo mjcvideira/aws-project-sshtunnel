@@ -1,3 +1,4 @@
+
 # How to Set Up a Jump Box to Access Isolated Database in AWS
 
 In this guide, we will walk you through the process of setting up an AWS project that involves using an EC2 instance as a "jump box" to securely access an isolated database. The jump box acts as an intermediary server, providing controlled and secure access to the database.
