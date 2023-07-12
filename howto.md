@@ -71,6 +71,10 @@ In this guide, we will walk you through the process of setting up an AWS project
 8. Configure additional settings, such as storage, backups, and monitoring, based on your requirements.
 9. Review the settings and click on "Create database" to create the isolated database.
 
+![image](https://github.com/mjcvideira/aws-project-sshtunnel/assets/114146806/c9d44a43-aa24-4bbf-a81e-8555126c40d9)
+
+You will need this dns name under Endpoint & Port
+
 ## Step 7: Establish SSH Tunnel and Access the Database
 
 Open a terminal or command prompt on your local machine.
@@ -82,4 +86,12 @@ Replace path/to/key.pem with the path to your private key file.
 Replace <local-port> with the desired local port for port forwarding (e.g., 3306 for MySQL).
 Replace <database-endpoint> and <database-port> with the endpoint and port of the isolated database.
 Replace <jump-box-public-ip> with the public IP of the jump box instance.
+
+This is mine : ssh -v -i chavemestra.pem -f -N -L 3306:database-1-tunel-instance-1.cclvulz7vygk.us-east-1.rds.amazonaws.com:3306 ec2-user@18.215.11.194
+
+This should be the output, if the tunnel was successfully created
+
+![image](https://github.com/mjcvideira/aws-project-sshtunnel/assets/114146806/fad16520-5cc0-4554-9428-b2d9cbe760dd)
+Note: you should be on the dir where you have the .pem key
+
 Once the SSH tunnel is established, you can use database management tools (e.g., MySQL, pgAdmin) to connect to localhost:<local-port> on your local machine and interact with the isolated database.
