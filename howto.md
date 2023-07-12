@@ -62,7 +62,11 @@ In this guide, we will walk you through the process of setting up an AWS project
 ## Step 6: Set Up the Isolated Database (Amazon RDS)
 
 1. In the Amazon RDS dashboard, click on "Subnet groups" and then "Create DB subnet group."
-2. Provide a name and description for the subnet group.
+2. Provide a name and description for the subnet group, this security group should have a rule permiting traffic from the tunnel instance with the correct port for your database, for mysql the port is 3306.
+
+![image](https://github.com/mjcvideira/aws-project-sshtunnel/assets/114146806/075c904c-3023-4efe-aa00-b27816421093)
+
+
 3. Select the private subnets you created in Step 2 and click on "Create."
 4. Click on "Databases" and then "Create database" to create a new database.
 5. Choose the desired database engine (e.g., Amazon Aurora, MySQL) and version.
@@ -74,6 +78,8 @@ In this guide, we will walk you through the process of setting up an AWS project
 ![image](https://github.com/mjcvideira/aws-project-sshtunnel/assets/114146806/c9d44a43-aa24-4bbf-a81e-8555126c40d9)
 
 You will need this dns name under Endpoint & Port
+
+
 
 ## Step 7: Establish SSH Tunnel and Access the Database
 
