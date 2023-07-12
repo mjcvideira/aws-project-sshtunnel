@@ -29,7 +29,7 @@ In this guide, we will walk you through the process of setting up an AWS project
 2. Provide a name for the subnet and select the VPC you created in the previous step.
 3. Choose an appropriate IPv4 CIDR block for the subnet (e.g., `10.0.1.0/24`).
 4. Select the availability zone in which you want to create the subnet.
-5. Repeat these steps to create both a public and a private subnet.
+5. Repeat these steps to create both a public and private subnets. (Make sure you have 1 private subnet in atleast 2 different zones, otherwise you will not be able to create your database.
 
 ## Step 3: Set Up Internet Gateway and Route Tables
 
