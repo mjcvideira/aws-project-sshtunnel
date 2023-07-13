@@ -86,7 +86,7 @@ You will need this dns name under Endpoint & Port
 Open a terminal or command prompt on your local machine.
 Use the following command to establish an SSH tunnel to the jump box instance:
 
- ssh -i path/to/key.pem -L <local-port>:<database-endpoint>:<database-port> ec2-user@<jump-box-public-ip>
+_ ssh -i path/to/key.pem -L <local-port>:<database-endpoint>:<database-port> ec2-user@<jump-box-public-ip>_
 
 Replace path/to/key.pem with the path to your private key file.
 Replace <local-port> with the desired local port for port forwarding (e.g., 3306 for MySQL).
